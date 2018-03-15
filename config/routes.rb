@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   namespace :api do
     resources :notes
+    resources :friends
     #API ROUTES SHOULD GO HERE
   end
 

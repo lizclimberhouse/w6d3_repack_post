@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Divider, Header, Image, Container, Table, Button } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import NoteForm from './NoteForm';
+import { deleteNote } from '../actions/notes';
 
 // const NoteView = ({ note = {} }) => (
 class NoteView extends React.Component {
@@ -14,6 +15,12 @@ class NoteView extends React.Component {
     })
   }
 
+  removeNote = () => {
+    const { note: { id }, dispatch, history } = this.props
+    dispatch(deleteNote(id))
+    history.push('/notes')
+  }
+
   render() {
     const { showForm } = this.state;
     const { note = {} } = this.props;
@@ -22,6 +29,9 @@ class NoteView extends React.Component {
         <Link to="/notes">View All Notes</Link>
         <Button onClick={this.toggleForm}>
           { showForm ? 'Cancel' : 'Edit' }
+        </Button>
+        <Button color="red" onClick={this.removeNote}>
+          Delete
         </Button>
         { showForm ?
           <NoteForm {...note} closeForm={this.toggleForm} />

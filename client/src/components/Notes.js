@@ -65,6 +65,12 @@ class Notes extends React.Component {
     return (
       <Container>
         <Header as="h3" textAlign="center">Notes</Header>
+        <Button basic><Link to="/">
+          Home
+        </Link></Button>
+        <Button basic><Link to="/friends">
+          Friends
+        </Link></Button>
         <Button onClick={this.toggleForm}>
           { showForm ? 'Hide Form' : 'Show Form' }
         </Button>
